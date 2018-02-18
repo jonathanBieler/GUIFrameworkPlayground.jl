@@ -16,14 +16,32 @@ module GUIFrameworkPlayground
     
 end # module
 
+##
+
 G = GUIFrameworkPlayground
 
 b = G.SDL2GUIBackend()
 win = G.window(b,800,600)
 
-G.rectangle(win,100,100,200,100)
-G.update!(win)
+#G.clear!(win)
 
-sleep(1.0)
+for i=1:100
+
+    x,y = G.mouse_position(win)  
+
+    G.rectangle(win,x,y,200,100)
+    G.text(win,"hellow world",x,y)
+
+    G.update!(win)
+    sleep(1/30)
+end
 
 G.destroy(win)
+##
+
+e = SDL2.Event(ntuple(i->0,56))
+SDL2.PollEvent(pointer_from_objref(e))
+e
+#e(1) is event type
+
+##

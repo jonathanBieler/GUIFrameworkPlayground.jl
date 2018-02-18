@@ -45,7 +45,25 @@ function rectangle(win::SDL2Window,x,y,w,h,color=RGB(0.9,0.9,0.9))
     restore(cr)
 end
 
-function clear!(win,color=RGB(1.0,1.0,1.0))
+function clear!(win::SDL2Window,color=RGB(1.0,1.0,1.0))
     w, h = width(win), height(win)
     rectangle(win,0,0,w,h,color)
 end
+
+function text(win::SDL2Window,str,x,y,color=RGB(0.0,0.0,0.0))
+
+    cr = win.surfaces.cairo_context
+
+    set_source_rgb(cr,color.r,color.g,color.b)
+    select_font_face(cr, "monospace", Cairo.FONT_SLANT_NORMAL,Cairo.FONT_WEIGHT_NORMAL)
+    set_font_size(cr, 12.0)
+
+    move_to(cr, x, y)
+    show_text(cr,str)
+end
+
+mouse_position(win::SDL2Window) = SDL2.mouse_position()
+
+
+
+##
