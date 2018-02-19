@@ -64,6 +64,17 @@ end
 
 mouse_position(win::SDL2Window) = SDL2.mouse_position()
 
+function events(win::SDL2Window)
+    out = []
+    ev = SDL2.event()
+    while ev != nothing
+        push!(out,ev)
+        ev = SDL2.event()
+    end
+    
+    out
+end 
+
 
 
 ##
