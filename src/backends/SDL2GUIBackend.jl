@@ -50,7 +50,7 @@ function clear!(win::SDL2Window,color=RGB(1.0,1.0,1.0))
     rectangle(win,0,0,w,h,color)
 end
 
-function text(win::SDL2Window,str,x,y,color=RGB(0.0,0.0,0.0))
+function text(win::SDL2Window,x,y,str::String,color=RGB(0.0,0.0,0.0))
 
     cr = win.surfaces.cairo_context
 
