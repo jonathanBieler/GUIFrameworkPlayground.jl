@@ -1,3 +1,4 @@
+__precompile__()
 module GUIFrameworkPlayground
 
     using SDL2, Cairo, ColorTypes, Graphics, DataStructures

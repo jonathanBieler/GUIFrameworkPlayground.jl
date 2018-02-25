@@ -2,4 +2,4 @@ using GUIFrameworkPlayground
 using Base.Test
 
 # write your own tests here
-@test 1 == 2
+include(joinpath("..","examples","example01.jl"))
