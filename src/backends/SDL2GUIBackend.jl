@@ -1,3 +1,5 @@
+import Base: convert
+
 struct SDL2GUIBackend <: AbstractGUIBackend
     function SDL2GUIBackend()
         SDL2.init()
@@ -74,6 +76,12 @@ function events(win::SDL2Window)
     
     out
 end 
+
+function convert(KeyEvent,ev::SDL2.KeyboardEvent) 
+
+    action = ev._type == SDL2.KEYDOWN ? RELEASE : PRESS
+    KeyEvent(ev.keysym.sym, action, ev.keysym.mod )
+end
 
 
 

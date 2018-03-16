@@ -1,9 +1,8 @@
-__precompile__()
+#__precompile__()
 module GUIFrameworkPlayground
 
     using SDL2, Cairo, ColorTypes, Graphics, DataStructures
     using GLVisualize
-
 
     import Cairo: rectangle
     import Graphics: width, height
@@ -15,6 +14,9 @@ module GUIFrameworkPlayground
     init!(b::AbstractGUIBackend) = error("This method must be implemented.")
 
     abstract type AbstractGUIWindow end 
+
+    info("loading events")
+    include("events.jl")
 
     include("backends/SDL2GUIBackend.jl")
     include("backends/OpenGLGUIBackend.jl")
